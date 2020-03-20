@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BikeRentApp.Core.Membership
 {
-    class Blue : IMembership
+    public class Blue : IMembership
     {
         public int Id { get; set; }
         public DateTime StartDate { get ; set; }

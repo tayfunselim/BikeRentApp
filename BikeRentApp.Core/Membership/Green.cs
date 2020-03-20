@@ -16,7 +16,7 @@ namespace BikeRentApp.Core.Membership
 
         public MembershipType GetMembershipType()
         {
-            return MembershipType.Green; ;
+            return MembershipType.Green;
         }
     }
 }

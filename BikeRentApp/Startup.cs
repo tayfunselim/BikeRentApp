@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using BikeRentApp.Core.Membership;
+using BikeRentApp.Data;
+using BikeRentApp.Data.InSqlData;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,7 +22,12 @@ namespace BikeRentApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
             services.AddRazorPages();
+            services.AddDbContextPool<BikeDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BikeDb")));
+            services.AddScoped<ICustomerData, CustomerDataSql>();
+            services.AddScoped<IMembershipData, MembershipDataSql>();
+            services.AddScoped<IPurchaseData, PurchaseDataSql>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +50,11 @@ namespace BikeRentApp
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                       name: "default",
+                       pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

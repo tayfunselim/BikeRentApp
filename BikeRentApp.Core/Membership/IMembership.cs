@@ -9,6 +9,7 @@ namespace BikeRentApp.Core
         public int Id { get; set; }
         public DateTime StartDate { get; set; }
         MembershipType GetMembershipType();
+        
         double GetDiscount();
     }
 }

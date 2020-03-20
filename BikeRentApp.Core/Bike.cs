@@ -12,6 +12,5 @@ namespace BikeRentApp.Core
 
         public int PurchaseId { get; set; }
         public Purchase Purchase { get; set; }
-
     }
 }
