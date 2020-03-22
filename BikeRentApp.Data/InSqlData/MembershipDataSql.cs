@@ -1,4 +1,5 @@
 ﻿using BikeRentApp.Core;
+using BikeRentApp.Core.Membership;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -20,13 +21,13 @@ namespace BikeRentApp.Data.InSqlData
             return bikeDbContext.SaveChanges();
         }
 
-        public IMembership Create(IMembership membership)
+        public Membership Create(Membership membership)
         {
             bikeDbContext.Memberships.Add(membership);
             return membership;
         }
 
-        public IMembership Delete(int id)
+        public Membership Delete(int id)
         {
             var tempMembership = bikeDbContext.Memberships.SingleOrDefault (m => m.Id == id);
             if (tempMembership!=null)
@@ -36,17 +37,17 @@ namespace BikeRentApp.Data.InSqlData
             return tempMembership;
         }
 
-        public IMembership GetMembershipById(int? id)
+        public Membership GetMembershipById(int? id)
         {
             return bikeDbContext.Memberships.SingleOrDefault(m=>m.Id==id);
         }
 
-        public IEnumerable<IMembership> GetMemberships()
+        public IEnumerable<Membership> GetMemberships()
         {
             return bikeDbContext.Memberships.ToList();
         }
 
-        public IMembership Update(IMembership membership)
+        public Membership Update(Membership membership)
         {
             bikeDbContext.Entry(membership).State = EntityState.Modified;
             return membership;

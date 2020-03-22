@@ -1,4 +1,5 @@
 ﻿using BikeRentApp.Core;
+using BikeRentApp.Core.Membership;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,13 +8,12 @@ namespace BikeRentApp.Data
 {
     public interface IMembershipData
     {
-        IMembership Create(IMembership membership);
-        IEnumerable<IMembership> GetMemberships();
-        IMembership GetMembershipById(int? id);
+        Membership Create(Membership membership);
+        IEnumerable<Membership> GetMemberships();
+        Membership GetMembershipById(int? id);
         int Commit();
 
-        IMembership Update(IMembership membership);
-        IMembership Delete(int id);
-
+        Membership Update(Membership membership);
+        Membership Delete(int id);
     }
 }

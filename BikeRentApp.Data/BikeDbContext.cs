@@ -1,4 +1,5 @@
 ﻿using BikeRentApp.Core;
+using BikeRentApp.Core.Membership;
 using Microsoft.EntityFrameworkCore;
 
 namespace BikeRentApp.Data
@@ -12,6 +13,6 @@ namespace BikeRentApp.Data
 
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
-        public DbSet<IMembership> Memberships { get; set; }
+        public DbSet<Membership> Memberships { get; set; }
     }
 }

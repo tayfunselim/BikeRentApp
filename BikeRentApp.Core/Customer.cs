@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace BikeRentApp.Core
 {
     public class Customer : Person
@@ -12,6 +13,6 @@ namespace BikeRentApp.Core
         }
 
         public int? MembershipId { get; set; }
-        public IMembership Membership { get; set; }
+        public Membership.Membership Membership { get; set; }
     }
 }

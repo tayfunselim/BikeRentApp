@@ -4,17 +4,14 @@ using System.Text;
 
 namespace BikeRentApp.Core.Membership
 {
-    public class Yellow : IMembership
-    {
-        public int Id { get; set; }
-        public DateTime StartDate { get; set; }
-
-        public double GetDiscount()
+    public class Yellow : Membership
+    {        
+        public override double GetDiscount()
         {
             return 15 / 100; ;
         }
 
-        public MembershipType GetMembershipType()
+        public override MembershipType GetMembershipType()
         {
             return MembershipType.Yellow;
         }
