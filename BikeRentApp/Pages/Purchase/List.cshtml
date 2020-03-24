@@ -1,0 +1,62 @@
+﻿@page
+@model BikeRentApp.Pages.ListModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Purchases</h1>
+<div>
+    <form method="get">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="search" asp-for="SearchTerm">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <table class="table table-bordered table-info table-hover table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Purchase No</th>
+                <th>Customer</th>
+                <th>Total Purchase</th>
+            </tr>
+        </thead>
+        @foreach (var purchase in Model.Purchases)
+        {
+            <tr>
+                <td>@purchase.Id</td>
+                <td>@purchase.Customer.FirstName @purchase.Customer.LastName</td>
+                <td>@Model.GetTotalPurchase(purchase)</td>
+            </tr>
+        }
+        <tfoot style="visibility:@(!Model.Purchases.Any() ? "visible" : "hidden")">
+            <tr>
+                <td colspan="3">No purchases untill now!</td>
+            </tr>
+        </tfoot>
+        <tfoot style="visibility:@(Model.Purchases.Any() ? "visible" : "hidden")">
+            <tr>
+                <td colspan="2">Total by customer</td>
+            </tr>
+            @foreach (var purchase in Model.Purchases.GroupBy(p => p.CustomerId))
+            {
+                <tr>
+                    <td>@purchase.First().Customer.FirstName @purchase.First().Customer.LastName</td>
+                    <td>@purchase.Sum(p => Model.GetTotalPurchase(p))</td>
+                </tr>
+            }
+        </tfoot>
+    </table>
+</div>
+<div class="form-group">
+    <a class="btn btn-primary" asp-page="./Edit">BUY</a>
+</div>
+@if (!string.IsNullOrEmpty(Model.TempMessage))
+{
+    <div class="alert alert-dark">@Model.TempMessage</div>
+}

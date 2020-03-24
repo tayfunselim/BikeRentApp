@@ -1,9 +1,7 @@
 ﻿using BikeRentApp.Core;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BikeRentApp.Data.InSqlData
 {
@@ -38,18 +36,22 @@ namespace BikeRentApp.Data.InSqlData
 
         public Customer GetCustomerById(int id)
         {
-            return bikeDbContext.Customers.Include(m => m.Membership).SingleOrDefault(c=>c.Id == id);
-        }
-
-        public IEnumerable<Customer> GetCustomers(string searchTerm = null)
-        {
             return bikeDbContext.Customers
                 .Include(m => m.Membership)
-                .Where(n => string.IsNullOrEmpty(searchTerm)
-                    || n.FirstName.ToLower().StartsWith(searchTerm.ToLower())
-                    || n.LastName.ToLower().StartsWith(searchTerm.ToLower()))
-                    .OrderBy(n => n.FirstName)
-                    .ToList();
+                .Include (e=>e.Email)
+                .SingleOrDefault(c=>c.Id == id);
+        }
+        
+
+        public IEnumerable<Customer> GetCustomers(string searchName = null, string searchEmail = null)
+        {
+            var sNamePattern = !string.IsNullOrEmpty(searchName) ? $"{searchName}%" : searchName;
+            var emailPattern = !string.IsNullOrEmpty(searchEmail) ? $"{searchEmail}%" : searchEmail;
+            return bikeDbContext.Customers
+                .Where(c => string.IsNullOrEmpty(searchName) || EF.Functions.Like(c.FirstName, sNamePattern))
+                .Where(c => string.IsNullOrEmpty(searchName) || EF.Functions.Like(c.LastName, sNamePattern))
+                .Where(c => string.IsNullOrEmpty(searchEmail) || EF.Functions.Like(c.Email, emailPattern))
+                .ToList();                
         }
 
         public Customer Update(Customer customer)

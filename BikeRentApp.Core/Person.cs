@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BikeRentApp.Core
 {
@@ -14,7 +11,7 @@ namespace BikeRentApp.Core
         [Required, MaxLength(50), Display(Name = "Last Name")]
         public string LastName { get; set; }
                 
-        [Required, EmailAddress, DataType(DataType.EmailAddress)]
+        [EmailAddress, DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Phone, DataType(DataType.PhoneNumber)]
         public string PhoneNumber { get; set; }

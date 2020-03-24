@@ -1,0 +1,57 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using BikeRentApp.BusinessLayer;
+using BikeRentApp.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace BikeRentApp.Pages.Purchase
+{
+    public class EditModel : PageModel
+    {
+        private readonly IPurchaseData purchaseData;
+        private readonly ICustomerData customerData;
+        private readonly PurchaseBL purchaseBL;
+
+        public EditModel(IPurchaseData purchaseData, ICustomerData customerData, PurchaseBL purchaseBL)
+        {
+            this.purchaseData = purchaseData;
+            this.customerData = customerData;
+            this.purchaseBL = purchaseBL;
+        }
+
+        public Core.Purchase Purchase { get; set; }
+        public string Message { get; set; }
+        public IEnumerable<SelectListItem> Customers { get; set; }
+        
+        public IActionResult OnGet()
+        {
+            Purchase = new Core.Purchase();
+            var customers = customerData.GetCustomers().ToList().Select(p => new { Id = p.Id, Display = $"{p.FirstName} {p.LastName}" });
+            Customers = new SelectList(customers, "Id", "Display");
+            return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            if (ModelState.IsValid)
+            {
+                var customer = customerData.GetCustomerById(Purchase.CustomerId.Value);
+                Purchase.Customer = customer;
+
+                Purchase = purchaseData.Create(Purchase);
+                TempData["Message"] = "Purchase is registered!";
+
+                purchaseData.Commit();
+                return RedirectToPage("./List");
+            }
+
+            var customers = customerData.GetCustomers().ToList().Select(p => new { Id = p.Id, Display = $"{p.FirstName} {p.LastName}" });
+            Customers = new SelectList(customers, "Id", "Display");
+            return Page();
+        }
+    }
+}

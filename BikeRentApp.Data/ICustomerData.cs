@@ -12,6 +12,6 @@ namespace BikeRentApp.Data
         Customer Update(Customer customer);
         int Commit();
         Customer Delete(int id);
-        IEnumerable<Customer> GetCustomers(string searchTerm = null);
+        IEnumerable<Customer> GetCustomers(string searchName = null, string searchEmail = null);
     }
 }

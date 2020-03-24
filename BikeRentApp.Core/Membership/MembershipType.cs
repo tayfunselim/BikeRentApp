@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Text;
 
-namespace BikeRentApp.Core
-{
-    public enum MembershipType
-    {
-        Green = 1,
-        Yellow = 2,
-        Blue = 3
-    }
-}
+//namespace BikeRentApp.Core
+//{
+//    public enum MembershipType
+//    {
+//        Green = 1,
+//        Yellow = 2,
+//        Blue = 3
+//    }
+//}

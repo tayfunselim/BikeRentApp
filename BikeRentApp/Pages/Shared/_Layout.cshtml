@@ -6,6 +6,8 @@
     <title>@ViewData["Title"] - BikeRentApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/solid.min.css" />
 </head>
 <body>
     <header>
@@ -19,7 +21,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Purchase/List">Purchases</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Customer/List">Customers</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
@@ -37,7 +42,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - BikeRentApp - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2020 - BikeRentApp by Tayfun Selim
         </div>
     </footer>
 

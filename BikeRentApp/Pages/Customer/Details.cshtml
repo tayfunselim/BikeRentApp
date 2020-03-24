@@ -1,0 +1,21 @@
+﻿@page "{id:int}"
+@model BikeRentApp.Pages.Customer.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details for: @Model.Customer.FirstName @Model.Customer.LastName</h1>
+<div>
+    Id: @Model.Customer.Id
+</div>
+<div>
+    Customer Name: @Model.Customer.FirstName @Model.Customer.LastName
+</div>
+<div>
+    Membership: @Model.Customer.Membership
+</div>
+<div>
+    Phone number: @Model.Customer.PhoneNumber
+</div>
+
+<a asp-page="./List" class="btn btn-primary">Back</a>

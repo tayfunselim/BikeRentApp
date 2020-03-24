@@ -1,10 +1,7 @@
-﻿using BikeRentApp.Core;
-using BikeRentApp.Core.Membership;
+﻿using BikeRentApp.Core.Membership;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace BikeRentApp.Data.InSqlData
 {
@@ -39,7 +36,7 @@ namespace BikeRentApp.Data.InSqlData
 
         public Membership GetMembershipById(int? id)
         {
-            return bikeDbContext.Memberships.SingleOrDefault(m=>m.Id==id);
+            return bikeDbContext.Memberships.SingleOrDefault(m=>m.Id == id);
         }
 
         public IEnumerable<Membership> GetMemberships()

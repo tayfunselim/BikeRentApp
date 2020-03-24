@@ -1,3 +1,4 @@
+using BikeRentApp.BusinessLayer;
 using BikeRentApp.Core.Membership;
 using BikeRentApp.Data;
 using BikeRentApp.Data.InSqlData;
@@ -27,7 +28,11 @@ namespace BikeRentApp
             services.AddDbContextPool<BikeDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BikeDb")));
             services.AddScoped<ICustomerData, CustomerDataSql>();
             services.AddScoped<IMembershipData, MembershipDataSql>();
-            services.AddScoped<IPurchaseData, PurchaseDataSql>();            
+            services.AddScoped<IPurchaseData, PurchaseDataSql>();
+            services.AddScoped<PurchaseBL>();
+            //services.AddScoped<Blue>();
+            //services.AddScoped<Yellow>();
+            //services.AddScoped<Green>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

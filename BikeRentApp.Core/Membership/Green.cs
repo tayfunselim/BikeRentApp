@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Text;
 
-namespace BikeRentApp.Core.Membership
-{
-    public class Green : Membership
-    {   
-        public override double GetDiscount()
-        {
-            return 20 / 100;
-        }
+//namespace BikeRentApp.Core.Membership
+//{
+//    public class Green : Membership
+//    {   
+//        public override double GetDiscount()
+//        {
+//            return 20 / 100;
+//        }
 
-        public override MembershipType GetMembershipType()
-        {
-            return MembershipType.Green;
-        }
-    }
-}
+//        public override MembershipType GetMembershipType()
+//        {
+//            return MembershipType.Green;
+//        }
+//    }
+//}

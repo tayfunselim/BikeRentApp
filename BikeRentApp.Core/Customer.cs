@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BikeRentApp.Core
 {
@@ -12,6 +9,7 @@ namespace BikeRentApp.Core
             get { return MembershipId.HasValue; }
         }
 
+        [Display(Name = "Membership")]
         public int? MembershipId { get; set; }
         public Membership.Membership Membership { get; set; }
     }
