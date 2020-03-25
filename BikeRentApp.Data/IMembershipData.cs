@@ -10,7 +10,7 @@ namespace BikeRentApp.Data
     {
         Membership Create(Membership membership);
         IEnumerable<Membership> GetMemberships();
-        Membership GetMembershipById(int? id);
+        Membership GetMembershipById(int? Id);
         int Commit();
 
         Membership Update(Membership membership);

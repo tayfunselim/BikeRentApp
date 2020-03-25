@@ -41,7 +41,7 @@
         </tfoot>
         <tfoot style="visibility:@(Model.Purchases.Any() ? "visible" : "hidden")">
             <tr>
-                <td colspan="2">Total by customer</td>
+                <td colspan="2"><b>Total by customer:</b></td>
             </tr>
             @foreach (var purchase in Model.Purchases.GroupBy(p => p.CustomerId))
             {

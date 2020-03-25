@@ -4,5 +4,46 @@
     ViewData["Title"] = "List";
 }
 
-<h1>List</h1>
+<h1>Memberships</h1>
+<div>
+    <table class="table table-bordered table-info table-hover table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Membership Type</th>
+                <th>Buying Discount</th>
+                <th>Rent Discount</th>
+                <th></th>
+            </tr>
+        </thead>
+        @foreach (var membership in Model.Memberships)
+        {
+            <tr>
+                <td>@membership.MembershipType</td>
+                <td>@membership.DiscountBuy.ToString("P")</td>
+                <td>@membership.DiscountRent.ToString("P")</td>
+                <td>
+                    <a class="btn btn-outline-secondary" asp-page="./Edit" asp-route-id="@membership.Id">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn btn-outline-secondary" asp-page="./Delete" asp-route-id="@membership.Id">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+        <tfoot style="visibility:@(!Model.Memberships.Any() ? "visible" : "hidden")">
+            <tr>
+                <td colspan="3">
+                    Nothing to display. Add membership!
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="form-group">
+    <a class="btn btn-primary" asp-page="./Edit">Add Membership</a>
+    <a class="btn btn-secondary" asp-page="/Customer/List">Back to customers list</a>
+</div>
+
+
 

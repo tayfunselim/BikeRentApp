@@ -19,19 +19,23 @@
     <div class="form-row">
         <div class="form-group col-sm-5">
             <label>PRICE-buy</label>
-            <input class="form-control" name="PRICE-buy" type="number" />
+            <input class="form-control" name="BuyPrice" type="number" />
         </div>
         <div class="form-group col-sm-5">
             <label>PRICE-rent</label>
-            <input class="form-control" name="PRICE-rent" type="number" />
+            <input class="form-control" name="RentPrice" type="number" />
         </div>
         <div class="form-group col-sm-2 d-flex">
-            <button type="submit" class="btn btn-secondary align-self-end" asp-page-handler="Buy">PURCHASE</button>
+            <button type="submit" class="btn btn-secondary align-self-end" asp-page-handler="Purchase">PURCHASE</button>
         </div>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary" asp-page-handler="">Save</button>
     </div>
+    <div class="form-group">
+        <a class="btn btn-success" asp-page="./List">Back to all purchases</a>
+    </div>
+
     @for (int i = 0; i < Model.Purchase.Bikes.Count; i++)
     {
         <input type="hidden" asp-for="@Model.Purchase.Bikes[i].Price" />

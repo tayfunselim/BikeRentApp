@@ -3,10 +3,17 @@
 @{
     ViewData["Title"] = "Edit";
 }
+@if (Model.Customer.Id == 0)
+{
+    <h1>Add new customer</h1>
+}
+else
+{
+<h1>Editing customer: @Model.Customer.FirstName @Model.Customer.LastName</h1>
+}
 
-<h1>Editing: @Model.Customer.FirstName @Model.Customer.LastName</h1>
 <form method="post">
-    <input type="hidden" value="@Model.Customer.Id" />
+    <input type="hidden" asp-for="Customer.Id" />
     <div class="form-row">
         <div class="form-group col-sm-6">
             <label asp-for="Customer.FirstName"></label>
@@ -19,8 +26,8 @@
             <span class="text-danger" asp-validation-for="Customer.LastName"></span>
         </div>
         <div class="form-group col-sm-6">
-            <label asp-for="Customer.Membership"></label>
-            <select class="form-control" asp-for="Customer.Membership" asp-items="@Model.Memberships">
+            <label asp-for="Customer.MembershipId"></label>
+            <select class="form-control" asp-for="Customer.MembershipId" asp-items="@Model.Memberships">
                 <option value="">Select membership!</option>
             </select>
         </div>

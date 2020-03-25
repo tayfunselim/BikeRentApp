@@ -1,8 +1,15 @@
-﻿@page
+﻿@page "{id:int}"
 @model BikeRentApp.Pages.Membership.DeleteModel
 @{
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
 
+<h1>Delete</h1>
+<div class="alert alert-dark">
+    Are you sure you want to delete @Model.Membership.MembershipType?
+</div>
+<form method="post">
+    <button type="submit" class="btn btn-dark">Yes!</button>
+    <a asp-page="./List" class="btn btn-outline-dark">Cancel</a>
+</form>

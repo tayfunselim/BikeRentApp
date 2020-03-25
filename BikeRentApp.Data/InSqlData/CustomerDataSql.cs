@@ -38,7 +38,7 @@ namespace BikeRentApp.Data.InSqlData
         {
             return bikeDbContext.Customers
                 .Include(m => m.Membership)
-                .Include (e=>e.Email)
+                //.Include (e=>e.Email)
                 .SingleOrDefault(c=>c.Id == id);
         }
         
@@ -48,8 +48,9 @@ namespace BikeRentApp.Data.InSqlData
             var sNamePattern = !string.IsNullOrEmpty(searchName) ? $"{searchName}%" : searchName;
             var emailPattern = !string.IsNullOrEmpty(searchEmail) ? $"{searchEmail}%" : searchEmail;
             return bikeDbContext.Customers
-                .Where(c => string.IsNullOrEmpty(searchName) || EF.Functions.Like(c.FirstName, sNamePattern))
-                .Where(c => string.IsNullOrEmpty(searchName) || EF.Functions.Like(c.LastName, sNamePattern))
+                .Include(m=>m.Membership)
+                .Where(c => string.IsNullOrEmpty(searchName) || EF.Functions.Like(c.FirstName, sNamePattern)
+                || EF.Functions.Like(c.LastName, sNamePattern))
                 .Where(c => string.IsNullOrEmpty(searchEmail) || EF.Functions.Like(c.Email, emailPattern))
                 .ToList();                
         }

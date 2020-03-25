@@ -37,7 +37,7 @@
         {
             <tr>
                 <td>@customer.FirstName @customer.LastName</td>
-                <td>@customer.Membership</td>
+                <td>@customer.Membership?.MembershipType</td>
                 <td>@customer.Email</td>
                 <td>@customer.PhoneNumber</td>
                 <td>
@@ -67,5 +67,5 @@
 </div>
 
 <div class="form-group">
-    <a class="btn btn-primary" asp-page="/Membership/Edit">Add Membership</a>
+    <a class="btn btn-primary" asp-page="/Membership/List">Memberships</a>
 </div>

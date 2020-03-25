@@ -1,5 +1,4 @@
 using BikeRentApp.BusinessLayer;
-using BikeRentApp.Core.Membership;
 using BikeRentApp.Data;
 using BikeRentApp.Data.InSqlData;
 using Microsoft.AspNetCore.Builder;

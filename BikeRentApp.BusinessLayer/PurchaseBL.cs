@@ -37,7 +37,6 @@ namespace BikeRentApp.BusinessLayer
         public double TotalPurchase (Purchase purchase)
         {
             var sum = 0.0;            
-
             foreach (var item in purchase.Bikes.Where(b => b.BikeModel == PurchaseType.Buy).ToList())
             {
                 if (purchase.Customer.IsMember)

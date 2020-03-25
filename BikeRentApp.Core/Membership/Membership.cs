@@ -10,6 +10,7 @@ namespace BikeRentApp.Core.Membership
             DiscountRent = 15 / 100;
         }
         public int Id { get; set; }
+        
         //public DateTime StartDate { get; set; }
         
         [Required, MaxLength(15)]

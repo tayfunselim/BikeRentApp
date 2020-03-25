@@ -22,7 +22,8 @@ namespace BikeRentApp.Pages.Purchase
             this.customerData = customerData;
             this.purchaseBL = purchaseBL;
         }
-
+        
+        [BindProperty]
         public Core.Purchase Purchase { get; set; }
         public string Message { get; set; }
         public IEnumerable<SelectListItem> Customers { get; set; }
@@ -49,6 +50,29 @@ namespace BikeRentApp.Pages.Purchase
                 return RedirectToPage("./List");
             }
 
+            var customers = customerData.GetCustomers().ToList().Select(p => new { Id = p.Id, Display = $"{p.FirstName} {p.LastName}" });
+            Customers = new SelectList(customers, "Id", "Display");
+            return Page();
+        }
+
+        public IActionResult OnPostPurchase(double? BuyPrice, double? RentPrice)
+        {
+            if (ModelState.IsValid)
+            {
+                var customer = customerData.GetCustomerById(Purchase.CustomerId.Value);
+                Purchase.Customer = customer;
+
+                if (BuyPrice.HasValue && BuyPrice.Value > 0)
+                {
+                    Purchase.Bikes.Add(purchaseBL.CreateBuy(BuyPrice.Value));
+                }
+                if (RentPrice.HasValue && RentPrice.Value > 0)
+                {
+                    Purchase.Bikes.Add(purchaseBL.CreateRent(RentPrice.Value));
+                }
+            }
+
+            Message = Purchase.CustomerId == null ? "No customer selected." : $"Total expences: {purchaseBL.TotalPurchase(Purchase)}";
             var customers = customerData.GetCustomers().ToList().Select(p => new { Id = p.Id, Display = $"{p.FirstName} {p.LastName}" });
             Customers = new SelectList(customers, "Id", "Display");
             return Page();
