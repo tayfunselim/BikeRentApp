@@ -18,6 +18,10 @@ namespace BikeRentApp.Pages.Customer
 
         [BindProperty(SupportsGet = true)]
         public string SearchEmail { get; set; }
+
+        [TempData]
+        public string TempMessage { get; set; }
+
         public IEnumerable<Core.Customer> Customers { get; set; }
         public void OnGet()
         {

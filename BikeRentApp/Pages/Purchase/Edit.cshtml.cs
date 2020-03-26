@@ -44,7 +44,7 @@ namespace BikeRentApp.Pages.Purchase
                 Purchase.Customer = customer;
 
                 Purchase = purchaseData.Create(Purchase);
-                TempData["Message"] = "Purchase is registered!";
+                TempData["TempMessage"] = "Purchase is registered!";
 
                 purchaseData.Commit();
                 return RedirectToPage("./List");

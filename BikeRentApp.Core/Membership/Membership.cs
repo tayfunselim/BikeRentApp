@@ -11,20 +11,13 @@ namespace BikeRentApp.Core.Membership
         }
         public int Id { get; set; }
         
-        //public DateTime StartDate { get; set; }
-        
         [Required, MaxLength(15)]
         public string MembershipType { get; set; }
+        
+        [Required]
         public double DiscountBuy { get; set; }
-        public double DiscountRent { get; set; }
-        //public virtual MembershipType GetMembershipType()
-        //{
-        //    return MembershipType.Blue;
-        //}
-
-        //public virtual double GetDiscount()
-        //{
-        //    return 10 / 100;
-        //}
+        
+        [Required]
+        public double DiscountRent { get; set; }        
     }
 }

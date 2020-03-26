@@ -40,12 +40,12 @@ namespace BikeRentApp.Pages.Membership
                 if (Membership.Id == 0)
                 {
                     Membership = membershipData.Create(Membership);
-                    TempData["Message"] = "The Membership is created!";
+                    TempData["TempMessage"] = "New membership is created!";
                 }
                 else
                 {
                     Membership = membershipData.Update(Membership);
-                    TempData["Message"] = "The Membership is updated!";
+                    TempData["TempMessage"] = "Membership terms are updated!";
                 }
                 
                 membershipData.Commit();

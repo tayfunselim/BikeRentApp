@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BikeRentApp.Data;
+﻿using BikeRentApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -25,7 +21,6 @@ namespace BikeRentApp.Pages.Customer
                 return RedirectToPage("./NotFound");
             }
             return Page();
-        }
-        
+        }        
     }
 }

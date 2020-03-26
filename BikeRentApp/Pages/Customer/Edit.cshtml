@@ -4,12 +4,12 @@
     ViewData["Title"] = "Edit";
 }
 @if (Model.Customer.Id == 0)
-{
-    <h1>Add new customer</h1>
+	{
+		 <h1>Add new customer</h1>
 }
 else
 {
-<h1>Editing customer: @Model.Customer.FirstName @Model.Customer.LastName</h1>
+    <h1>Editing customer: @Model.Customer.FirstName @Model.Customer.LastName</h1>
 }
 
 <form method="post">
@@ -17,12 +17,12 @@ else
     <div class="form-row">
         <div class="form-group col-sm-6">
             <label asp-for="Customer.FirstName"></label>
-            <input class="form-control" asp-for="Customer.FirstName" />
+            <input class="form-control" placeholder="type here" asp-for="Customer.FirstName" />
             <span class="text-danger" asp-validation-for="Customer.FirstName"></span>
         </div>
         <div class="form-group col-sm-6">
             <label asp-for="Customer.LastName"></label>
-            <input class="form-control" asp-for="Customer.LastName" />
+            <input class="form-control" placeholder="type here" asp-for="Customer.LastName" />
             <span class="text-danger" asp-validation-for="Customer.LastName"></span>
         </div>
         <div class="form-group col-sm-6">
@@ -33,7 +33,7 @@ else
         </div>
         <div class="form-group col-sm-6">
             <label asp-for="Customer.Email"></label>
-            <input class="form-control" asp-for="Customer.Email" />
+            <input type="email" placeholder="name@example.com" class="form-control" asp-for="Customer.Email" />
             <span class="text-danger" asp-validation-for="Customer.Email"></span>
         </div>
         <div class="form-group col-sm-6">

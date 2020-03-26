@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BikeRentApp.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BikeRentApp.Pages.Membership
 {
+    
     public class DeleteModel : PageModel
     {
         private readonly IMembershipData membershipData;
@@ -27,7 +29,7 @@ namespace BikeRentApp.Pages.Membership
             }
             return Page();
         }
-
+        
         public IActionResult OnPost(int id)
         {
             var temp = membershipData.Delete(id);
@@ -36,9 +38,8 @@ namespace BikeRentApp.Pages.Membership
                 return RedirectToPage("./NotFound");
             }
             membershipData.Commit();
-            TempData["Message"] = "The membership is deleted!";
+            TempData["TempMessage"] = "The membership is deleted!";
             return RedirectToPage("./List");
         }
-
     }
 }

@@ -12,6 +12,9 @@ namespace BikeRentApp.Pages.Membership
     {
         private readonly IMembershipData membershipData;
         public IEnumerable<Core.Membership.Membership> Memberships { get; set; }
+        
+        [TempData]
+        public string TempMessage { get; set; }
 
         public ListModel(IMembershipData membershipData)
         {

@@ -35,7 +35,7 @@ namespace BikeRentApp.Pages.Customer
             }
 
             customerData.Commit();
-            TempData["Message"] = "The customer is deleted!";
+            TempData["TempMessage"] = "The customer is deleted!";
             return RedirectToPage("./List");
         }
     }

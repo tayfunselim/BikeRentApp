@@ -45,5 +45,7 @@
     <a class="btn btn-secondary" asp-page="/Customer/List">Back to customers list</a>
 </div>
 
-
-
+@if (!string.IsNullOrEmpty(Model.TempMessage))
+{
+    <div class="alert alert-warning">@Model.TempMessage</div>
+}

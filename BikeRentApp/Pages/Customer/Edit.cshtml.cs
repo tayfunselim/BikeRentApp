@@ -53,12 +53,12 @@ namespace BikeRentApp.Pages.Customer
                 if (Customer.Id == 0)
                 {
                     Customer = customerData.Create(Customer);
-                    TempData["Message"] = "New customer is created!";
+                    TempData["TempMessage"] = "New customer is created!";
                 }
                 else
                 {
                     Customer = customerData.Update(Customer);
-                    TempData["Message"] = "The customer is updated!";
+                    TempData["TempMessage"] = "Data for customer is updated!";
                 }
 
                 customerData.Commit();
