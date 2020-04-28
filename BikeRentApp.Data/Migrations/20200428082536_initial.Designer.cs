@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BikeRentApp.Data.Migrations
 {
     [DbContext(typeof(BikeDbContext))]
-    [Migration("20200326133201_identity")]
-    partial class identity
+    [Migration("20200428082536_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

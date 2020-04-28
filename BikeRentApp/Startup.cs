@@ -28,10 +28,7 @@ namespace BikeRentApp
             services.AddScoped<ICustomerData, CustomerDataSql>();
             services.AddScoped<IMembershipData, MembershipDataSql>();
             services.AddScoped<IPurchaseData, PurchaseDataSql>();
-            services.AddScoped<PurchaseBL>();
-            //services.AddScoped<Blue>();
-            //services.AddScoped<Yellow>();
-            //services.AddScoped<Green>();
+            services.AddScoped<PurchaseBL>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
