@@ -28,7 +28,9 @@ namespace BikeRentApp
             services.AddScoped<ICustomerData, CustomerDataSql>();
             services.AddScoped<IMembershipData, MembershipDataSql>();
             services.AddScoped<IPurchaseData, PurchaseDataSql>();
-            services.AddScoped<PurchaseBL>();            
+            services.AddScoped<PurchaseBL>();
+            services.AddControllers().AddNewtonsoftJson
+                (options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

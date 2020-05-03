@@ -48,15 +48,12 @@ namespace BikeRentApp.Data.InSqlData
             return bikeDbContext.Purchases.SingleOrDefault(p=>p.Id == id);
         }
 
-        public IEnumerable<Purchase> GetPurchases(string searchTerm = null)
+        public IEnumerable<Purchase> GetPurchases()
         {
             return bikeDbContext
                 .Purchases.Include(p => p.Customer)
                           .ThenInclude(p => p.Membership)
-                          .Include(p => p.Bikes)
-                          .Where(p => string.IsNullOrEmpty(searchTerm)
-                              || p.Customer.FirstName.ToLower().StartsWith(searchTerm.ToLower())
-                              || p.Customer.LastName.ToLower().StartsWith(searchTerm.ToLower()))
+                          .Include(p => p.Bikes)                          
                           .OrderBy(p => p.Customer.FirstName)
                           .ToList();
         }

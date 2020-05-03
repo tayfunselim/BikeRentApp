@@ -32,7 +32,7 @@ namespace BikeRentApp.Pages
 
         public void OnGet()
         {
-            Purchases = purchaseData.GetPurchases(SearchTerm);
+            Purchases = purchaseData.GetPurchases();
         }
     }
 }
