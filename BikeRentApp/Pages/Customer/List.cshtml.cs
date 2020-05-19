@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using BikeRentApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -13,9 +14,11 @@ namespace BikeRentApp.Pages.Customer
             this.customerData = customerData;
         }
 
+        [Display (Name = "Search by name")]
         [BindProperty(SupportsGet = true)]
         public string SearchName { get; set; }
 
+        [Display(Name = "Search by e-mail")]
         [BindProperty(SupportsGet = true)]
         public string SearchEmail { get; set; }
 

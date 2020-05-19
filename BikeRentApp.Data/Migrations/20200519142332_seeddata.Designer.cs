@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BikeRentApp.Data.Migrations
 {
     [DbContext(typeof(BikeDbContext))]
-    [Migration("20200428082536_initial")]
-    partial class initial
+    [Migration("20200519142332_seeddata")]
+    partial class seeddata
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,6 +51,12 @@ namespace BikeRentApp.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Age")
+                        .HasColumnType("int");
+
+                    b.Property<int>("City")
+                        .HasColumnType("int");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -59,6 +65,9 @@ namespace BikeRentApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -77,6 +86,104 @@ namespace BikeRentApp.Data.Migrations
                     b.HasIndex("MembershipId");
 
                     b.ToTable("Customers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Age = 35,
+                            City = 1,
+                            Email = "tayfunselim@gmail.com",
+                            FirstName = "Tayfun",
+                            Gender = 1,
+                            LastName = "Selim",
+                            MembershipId = 1,
+                            PhoneNumber = "075-271056"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Age = 23,
+                            City = 2,
+                            Email = "ggor@gmail.com",
+                            FirstName = "Goran",
+                            Gender = 1,
+                            LastName = "Goranov",
+                            MembershipId = 2,
+                            PhoneNumber = "072-371057"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Age = 28,
+                            City = 5,
+                            Email = "petre@yahoo.com",
+                            FirstName = "Petar",
+                            Gender = 1,
+                            LastName = "Petrovski",
+                            MembershipId = 3,
+                            PhoneNumber = "071-273057"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Age = 29,
+                            City = 5,
+                            Email = "majap@gmail.com",
+                            FirstName = "Maja",
+                            Gender = 2,
+                            LastName = "Petrovska",
+                            MembershipId = 3,
+                            PhoneNumber = "078-371957"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Age = 33,
+                            City = 7,
+                            Email = "svetles@hotmail.com",
+                            FirstName = "Svetlana",
+                            Gender = 2,
+                            LastName = "Svetlovska",
+                            MembershipId = 2,
+                            PhoneNumber = "072-371059"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Age = 38,
+                            City = 6,
+                            Email = "jolem@hotmail.com",
+                            FirstName = "Jole",
+                            Gender = 2,
+                            LastName = "Mala",
+                            MembershipId = 1,
+                            PhoneNumber = "078-371359"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Age = 33,
+                            City = 3,
+                            Email = "gorde@hotmail.com",
+                            FirstName = "Gordana",
+                            Gender = 2,
+                            LastName = "Gorde",
+                            MembershipId = 3,
+                            PhoneNumber = "071-271059"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Age = 37,
+                            City = 1,
+                            Email = "fato@hotmail.com",
+                            FirstName = "Fatmir",
+                            Gender = 1,
+                            LastName = "Iseni",
+                            MembershipId = 2,
+                            PhoneNumber = "072-371042"
+                        });
                 });
 
             modelBuilder.Entity("BikeRentApp.Core.Membership.Membership", b =>
@@ -100,6 +207,29 @@ namespace BikeRentApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Memberships");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DiscountBuy = 0.20000000000000001,
+                            DiscountRent = 0.20000000000000001,
+                            MembershipType = "Green"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DiscountBuy = 0.14999999999999999,
+                            DiscountRent = 0.13,
+                            MembershipType = "Blue"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DiscountBuy = 0.10000000000000001,
+                            DiscountRent = 0.10000000000000001,
+                            MembershipType = "Yellow"
+                        });
                 });
 
             modelBuilder.Entity("BikeRentApp.Core.Purchase", b =>

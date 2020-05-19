@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BikeRentApp.Core.Enum;
 using BikeRentApp.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -10,17 +11,21 @@ namespace BikeRentApp.Pages.Customer
     public class EditModel : PageModel
     {
         private readonly ICustomerData customerData;
-        private readonly IMembershipData membershipData;        
+        private readonly IMembershipData membershipData;
+        private readonly IHtmlHelper htmlHelper;
 
         [BindProperty]
         public Core.Customer Customer { get; set; }
 
-        public IEnumerable<SelectListItem> Memberships { get; set; }       
-        
-        public EditModel(ICustomerData customerData, IMembershipData membershipData)
+        public IEnumerable<SelectListItem> Memberships { get; set; }
+        public IEnumerable<SelectListItem> Gender { get; set; }
+        public IEnumerable<SelectListItem> City { get; set; }
+
+        public EditModel(ICustomerData customerData, IMembershipData membershipData, IHtmlHelper htmlHelper)
         {
             this.customerData = customerData;
-            this.membershipData = membershipData;            
+            this.membershipData = membershipData;
+            this.htmlHelper = htmlHelper;
         }
 
         public IActionResult OnGet(int? id)
@@ -40,6 +45,8 @@ namespace BikeRentApp.Pages.Customer
 
             var memberships = membershipData.GetMemberships().ToList().Select(p => new { Id = p.Id, Display = p.MembershipType });
             Memberships = new SelectList(memberships, "Id", "Display");
+            Gender = htmlHelper.GetEnumSelectList<Gender>();
+            City = htmlHelper.GetEnumSelectList<City>();
             return Page();
         }
 
@@ -67,6 +74,8 @@ namespace BikeRentApp.Pages.Customer
 
             var memberships = membershipData.GetMemberships().ToList().Select(p => new { Id = p.Id, Display = p.MembershipType });
             Memberships = new SelectList(memberships, "Id", "Display");
+            Gender = htmlHelper.GetEnumSelectList<Gender>();
+            City = htmlHelper.GetEnumSelectList<City>();
             return Page();
         }
     }

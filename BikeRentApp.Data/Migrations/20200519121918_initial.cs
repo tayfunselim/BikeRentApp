@@ -230,6 +230,26 @@ namespace BikeRentApp.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Memberships",
+                columns: new[] { "Id", "DiscountBuy", "DiscountRent", "MembershipType" },
+                values: new object[] { 1, 0.20000000000000001, 0.20000000000000001, "Green" });
+
+            migrationBuilder.InsertData(
+                table: "Memberships",
+                columns: new[] { "Id", "DiscountBuy", "DiscountRent", "MembershipType" },
+                values: new object[] { 2, 0.14999999999999999, 0.13, "Blue" });
+
+            migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "Id", "Email", "FirstName", "LastName", "MembershipId", "PhoneNumber" },
+                values: new object[] { 1, "tayfunselim@gmail.com", "Tayfun", "Selim", 1, "075-271056" });
+
+            migrationBuilder.InsertData(
+                table: "Customers",
+                columns: new[] { "Id", "Email", "FirstName", "LastName", "MembershipId", "PhoneNumber" },
+                values: new object[] { 2, "ggor@gmail.com", "Goran", "Goranov", 2, "072-371057" });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",

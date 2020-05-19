@@ -17,5 +17,20 @@
 <div>
     Phone number: @Model.Customer.PhoneNumber
 </div>
+<div>
+    E-mail: @Model.Customer.Email
+</div>
+<div>
+    City: @Model.Customer.City
+</div>
+<div>
+    Age: @Model.Customer.Age
+</div>
+<div>
+    Gender: @Model.Customer.Gender
+</div>
 
-<a asp-page="./List" class="btn btn-primary">Back</a>
+<div class="form-group d-flex justify-content-start">
+    <a asp-page="./List" class="btn btn-primary">Back</a>
+    <a class="btn btn-outline-secondary" asp-page="./Edit" asp-route-id="@Model.Customer.Id">Edit</a>
+</div>
