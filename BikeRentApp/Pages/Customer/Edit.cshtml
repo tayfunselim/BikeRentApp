@@ -14,39 +14,42 @@ else
 
 <form method="post">
     <input type="hidden" asp-for="Customer.Id" />
-    <div class="form-row">
-        <div class="form-group col-sm-6">
-            <label asp-for="Customer.FirstName"></label>
-            <input class="form-control" placeholder="type here" asp-for="Customer.FirstName" />
-            <span class="text-danger" asp-validation-for="Customer.FirstName"></span>
+    <div class="form-group row">
+        <div class="form-group col-sm-12">
+            <div class="form-row">
+                <label class="col-form-label col-form-label-lg" asp-for="Customer.FirstName"></label>
+                <input class="form-control form-control-lg" placeholder="type here" asp-for="Customer.FirstName" />
+                <span class="text-danger" asp-validation-for="Customer.FirstName"></span>
+            </div>
+            <div class="form-row">
+                <label class="col-form-label col-form-label-lg" asp-for="Customer.LastName"></label>
+                <input class="form-control form-control-lg" placeholder="type here" asp-for="Customer.LastName" />
+                <span class="text-danger" asp-validation-for="Customer.LastName"></span>
+            </div>
         </div>
         <div class="form-group col-sm-6">
-            <label asp-for="Customer.LastName"></label>
-            <input class="form-control" placeholder="type here" asp-for="Customer.LastName" />
-            <span class="text-danger" asp-validation-for="Customer.LastName"></span>
-        </div>
-        <div class="form-group col-sm-4">
             <label asp-for="Customer.MembershipId"></label>
             <select class="form-control" asp-for="Customer.MembershipId" asp-items="@Model.Memberships">
                 <option value="">Select membership!</option>
             </select>
         </div>
-        <div class="form-group col-sm-4">
+        <div class="form-group col-sm-6">
             <label asp-for="Customer.Email"></label>
             <input type="email" placeholder="name@example.com" class="form-control" asp-for="Customer.Email" />
+            <small class="form-text text-muted">We'll never share your email with anyone else.</small>
             <span class="text-danger" asp-validation-for="Customer.Email"></span>
         </div>
-        <div class="form-group col-sm-4">
+        <div class="form-group col-sm-6">
             <label asp-for="Customer.PhoneNumber"></label>
             <input class="form-control" asp-for="Customer.PhoneNumber" />
             <span class="text-danger" asp-validation-for="Customer.PhoneNumber"></span>
         </div>
-        <div class=" = form-group col-sm-4">
+        <div class=" = form-group col-sm-6">
             <label asp-for="Customer.Age"></label>
             <input class="form-control" asp-for="Customer.Age" />
             <span class="text-danger" asp-validation-for="Customer.Age"></span>
         </div>
-        <div class="form-group col-sm-4">
+        <div class="form-group col-sm-6">
             <label asp-for="Customer.Gender"></label>
             <select class="form-control" asp-for="Customer.Gender" asp-items="@Model.Gender">
                 <option value="">select gender!</option>

@@ -3,8 +3,11 @@
 @{
     ViewData["Title"] = "List";
 }
+    
+<div class="container">
+    <h1>Customers</h1>
+</div>
 
-<h1>Customers</h1>
 <div>
     <form method="get">
         <div class="form-row">
@@ -26,9 +29,10 @@
     @if (!string.IsNullOrEmpty(Model.TempMessage))
     {
         <div class="alert alert-warning" role="alert">@Model.TempMessage</div>
+
     }
     <div class="table-responsive">
-        <table class="table table-bordered table-info table-hover table-sm">
+        <table class="table table-bordered table-warning table-hover table-sm">
             <thead class="thead-dark">
                 <tr>
                     <th>Customer</th>
@@ -75,6 +79,5 @@
     </div>
 </div>
 <div class="d-flex justify-content-between form-group">
-    <a class="btn btn-primary" asp-page="./Edit">Add Customer</a>
-    <a class="btn btn-success" asp-page="/Membership/List">Memberships</a>
+    <a class="btn btn-primary" asp-page="./Edit">Add Customer</a>    
 </div>

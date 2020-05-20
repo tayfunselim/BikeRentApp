@@ -4,33 +4,25 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details for: @Model.Customer.FirstName @Model.Customer.LastName</h1>
-<div>
-    Id: @Model.Customer.Id
-</div>
-<div>
-    Customer Name: @Model.Customer.FirstName @Model.Customer.LastName
-</div>
-<div>
-    Membership: @Model.Customer.Membership.MembershipType
-</div>
-<div>
-    Phone number: @Model.Customer.PhoneNumber
-</div>
-<div>
-    E-mail: @Model.Customer.Email
-</div>
-<div>
-    City: @Model.Customer.City
-</div>
-<div>
-    Age: @Model.Customer.Age
-</div>
-<div>
-    Gender: @Model.Customer.Gender
-</div>
 
-<div class="form-group d-flex justify-content-start">
-    <a asp-page="./List" class="btn btn-primary">Back</a>
-    <a class="btn btn-outline-secondary" asp-page="./Edit" asp-route-id="@Model.Customer.Id">Edit</a>
+<div class="card text-center border border-primary" style="width: 25rem;">
+    <div class="card-header">
+        <h3 class="card-title">Details for customer:</h3>
+        <h3>@Model.Customer.FirstName @Model.Customer.LastName</h3>
+    </div>
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">ID: @Model.Customer.Id</li>
+            <li class="list-group-item">Membership: @Model.Customer.Membership.MembershipType</li>
+            <li class="list-group-item">Phone number: @Model.Customer.PhoneNumber</li>
+            <li class="list-group-item">E-mail: @Model.Customer.Email</li>
+            <li class="list-group-item">City: @Model.Customer.City</li>
+            <li class="list-group-item">Age: @Model.Customer.Age</li>
+            <li class="list-group-item">Gender: @Model.Customer.Gender</li>
+        </ul>
+    </div>    
+    <div class="card-footer">
+        <a asp-page="./List" class="btn btn-primary">Back</a>
+        <a class="btn btn-outline-secondary" asp-page="./Edit" asp-route-id="@Model.Customer.Id">Edit</a>
+    </div>
 </div>

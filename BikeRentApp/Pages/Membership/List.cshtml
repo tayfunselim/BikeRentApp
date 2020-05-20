@@ -12,20 +12,22 @@
                 <th>Membership Type</th>
                 <th>Buying Discount</th>
                 <th>Rent Discount</th>
-                <th></th>
+                <th>Members</th>
+                <th>Edit | Delete</th>
             </tr>
         </thead>
-        @foreach (var membership in Model.Memberships)
+        @foreach (var membership in Model.Memberships.GroupBy(m=>m.MembershipType))
         {
             <tr>
-                <td>@membership.MembershipType</td>
-                <td>@membership.DiscountBuy.ToString("P")</td>
-                <td>@membership.DiscountRent.ToString("P")</td>
+                <td>@membership.First().MembershipType</td>
+                <td>@membership.First().DiscountBuy.ToString("P")</td>
+                <td>@membership.First().DiscountRent.ToString("P")</td>
+                <td>@Model.Customers.Where(c=>c.Membership.MembershipType == membership.First().MembershipType).Count()</td>
                 <td>
-                    <a class="btn btn-outline-secondary" asp-page="./Edit" asp-route-id="@membership.Id">
+                    <a class="btn btn-outline-secondary" asp-page="./Edit" asp-route-id="@membership.First().Id">
                         <i class="fas fa-edit"></i>
                     </a>
-                    <a class="btn btn-outline-secondary" asp-page="./Delete" asp-route-id="@membership.Id">
+                    <a class="btn btn-outline-secondary" asp-page="./Delete" asp-route-id="@membership.First().Id">
                         <i class="fas fa-trash"></i>
                     </a>
                 </td>

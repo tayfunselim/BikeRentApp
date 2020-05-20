@@ -37,8 +37,7 @@ namespace BikeRentApp.Data.InSqlData
         public Customer GetCustomerById(int id)
         {
             return bikeDbContext.Customers
-                .Include(m => m.Membership)
-                //.Include (e=>e.Email)
+                .Include(m => m.Membership)                
                 .SingleOrDefault(c=>c.Id == id);
         }
         

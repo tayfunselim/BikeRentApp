@@ -24,6 +24,10 @@
     <ProjectReference Include="..\BikeRentApp.Data\BikeRentApp.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+
 
 
 </Project>

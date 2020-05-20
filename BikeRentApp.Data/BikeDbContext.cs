@@ -9,7 +9,7 @@ namespace BikeRentApp.Data
 {
     public class BikeDbContext : IdentityDbContext<IdentityUser>
     {
-        public BikeDbContext(DbContextOptions<BikeDbContext> options) : base (options)
+        public BikeDbContext(DbContextOptions<BikeDbContext> options) : base(options)
         {
 
         }
@@ -146,6 +146,18 @@ namespace BikeRentApp.Data
                     Gender = Core.Enum.Gender.Male,
                     Age = 37
                 },
+                   new Customer
+                   {
+                       Id = 14,
+                    FirstName = "Monika",
+                    LastName = "Gogo",
+                    Email = "mogo@hotmail.com",
+                    PhoneNumber = "071-371042",
+                    MembershipId = 2,
+                    City = Core.Enum.City.Skopje,
+                    Gender = Core.Enum.Gender.Female,
+                    Age = 57
+                   }
             });
         }
     }
