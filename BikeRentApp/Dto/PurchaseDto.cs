@@ -7,5 +7,6 @@ namespace BikeRentApp.Dto
 {
     public class PurchaseDto
     {
+
     }
 }

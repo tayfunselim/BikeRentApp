@@ -72,7 +72,7 @@ namespace BikeRentApp.Pages.Purchase
                 }
             }
 
-            Message = Purchase.CustomerId == null ? "No customer selected." : $"Total expences: {purchaseBL.TotalPurchase(Purchase)}";
+            Message = Purchase.CustomerId == null ? "No customer selected." : $"Total expences: {purchaseBL.TotalPurchase(Purchase).ToString("C")}";
             var customers = customerData.GetCustomers().ToList().Select(p => new { Id = p.Id, Display = $"{p.FirstName} {p.LastName}" });
             Customers = new SelectList(customers, "Id", "Display");
             return Page();
