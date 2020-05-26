@@ -29,7 +29,7 @@
         {
             <tr>                
                 <td>@purchase.Customer.FirstName @purchase.Customer.LastName</td>
-                <td>@Model.GetTotalPurchase(purchase).ToString("C")</td>
+                <td>@Model.GetTotalPurchase(purchase).ToString("c0")</td>
             </tr>
         }
         <tfoot style="visibility:@(!Model.Purchases.Any() ? "visible" : "hidden")">
@@ -45,7 +45,7 @@
             {
                 <tr>
                     <td>@purchase.First().Customer.FirstName @purchase.First().Customer.LastName</td>
-                    <td>@purchase.Sum(p => Model.GetTotalPurchase(p)).ToString("C")</td>                    
+                    <td>@purchase.Sum(p => Model.GetTotalPurchase(p)).ToString("c0")</td>                    
                 </tr>
             }
         </tfoot>
@@ -56,5 +56,5 @@
 </div>
 @if (!string.IsNullOrEmpty(Model.TempMessage))
 {
-    <div class="alert alert-dark">@Model.TempMessage</div>
+    <div class="alert alert-success">@Model.TempMessage</div>
 }

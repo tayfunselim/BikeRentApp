@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using BikeRentApp.BusinessLayer;
 using BikeRentApp.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -64,15 +62,19 @@ namespace BikeRentApp.Pages.Purchase
 
                 if (BuyPrice.HasValue && BuyPrice.Value > 0)
                 {
-                    Purchase.Bikes.Add(purchaseBL.CreateBuy(BuyPrice.Value));
+                    Purchase.Bikes.Add(purchaseBL.CreateTofo(BuyPrice.Value));
                 }
                 if (RentPrice.HasValue && RentPrice.Value > 0)
                 {
-                    Purchase.Bikes.Add(purchaseBL.CreateRent(RentPrice.Value));
+                    Purchase.Bikes.Add(purchaseBL.CreateTLady(RentPrice.Value));
+                }
+                if (RentPrice.HasValue && RentPrice.Value > 0)
+                {
+                    Purchase.Bikes.Add(purchaseBL.CreateTUni(RentPrice.Value));
                 }
             }
 
-            Message = Purchase.CustomerId == null ? "No customer selected." : $"Total expences: {purchaseBL.TotalPurchase(Purchase).ToString("C")}";
+            Message = Purchase.CustomerId == null ? "No customer selected." : $"Total expences: {purchaseBL.TotalPurchase(Purchase).ToString("c0")}";
             var customers = customerData.GetCustomers().ToList().Select(p => new { Id = p.Id, Display = $"{p.FirstName} {p.LastName}" });
             Customers = new SelectList(customers, "Id", "Display");
             return Page();

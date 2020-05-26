@@ -13,20 +13,29 @@ namespace BikeRentApp.BusinessLayer
             this.purchaseData = purchaseData;
         }
 
-        public Bike CreateBuy(double price)
+        public Bike CreateTofo(double price)
         {
             return new Bike
             {
-                BikeModel = PurchaseType.Buy,
+                BikeModel = BikeModel.Tofo,
                 Price = price
             };
         }
         
-        public Bike CreateRent(double price)
+        public Bike CreateTLady(double price)
         {
             return new Bike
             {
-                BikeModel = PurchaseType.Rent,
+                BikeModel = BikeModel.TLady,
+                Price = price
+            };
+        }
+
+        public Bike CreateTUni(double price)
+        {
+            return new Bike
+            {
+                BikeModel = BikeModel.TUni,
                 Price = price
             };
         }
@@ -34,7 +43,7 @@ namespace BikeRentApp.BusinessLayer
         public double TotalPurchase (Purchase purchase)
         {
             var sum = 0.0;            
-            foreach (var item in purchase.Bikes.Where(b => b.BikeModel == PurchaseType.Buy).ToList())
+            foreach (var item in purchase.Bikes.Where(b => b.BikeModel == BikeModel.Tofo).ToList())
             {
                 if (purchase.Customer.IsMember)
                 {
@@ -46,7 +55,19 @@ namespace BikeRentApp.BusinessLayer
                 }
             }
 
-            foreach (var item in purchase.Bikes.Where(b => b.BikeModel == PurchaseType.Rent).ToList())
+            foreach (var item in purchase.Bikes.Where(b => b.BikeModel == BikeModel.TLady).ToList())
+            {
+                if (purchase.Customer.IsMember)
+                {
+                    sum += item.Price * (1 - purchase.Customer.Membership.DiscountRent);
+                }
+                else
+                {
+                    sum += item.Price;
+                }
+            }
+
+            foreach (var item in purchase.Bikes.Where(b => b.BikeModel == BikeModel.TUni).ToList())
             {
                 if (purchase.Customer.IsMember)
                 {

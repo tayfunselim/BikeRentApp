@@ -10,7 +10,7 @@ namespace BikeRentApp.Data
         Purchase Create(Purchase purchase);
         Purchase GetPurchaseById(int id);
         int Commit();
-        IEnumerable<Purchase> GetPurchases();
+        IEnumerable<Purchase> GetPurchases(string searchTerm = null);
         IEnumerable<Purchase> GetPurchasesByCustomer(int id);
         Purchase Update(Purchase purchase);
         Purchase Delete(int id);

@@ -4,9 +4,12 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="container">
-    <img src="~/Images/logo.jpg" class="img-fluid mx-auto d-block" alt="logo" />
-</div>
-<div class="text-center">    
-    <a class="btn btn-success btn-lg btn-block" asp-page="/Purchase/List"> P U R C H A S E </a>
+<div class="col-sm-12">
+    <div class="hovereffect">
+        <img class="img-responsive mx-auto d-block" src="~/Images/logo.jpg" alt="logo" style="width:750px;height:750px">
+        <div class="overlay">
+            <h2>W E L C O M E</h2>
+            <a class="info" asp-page="./Purchase/List">BOOK    NOW</a>
+        </div>
+    </div>
 </div>

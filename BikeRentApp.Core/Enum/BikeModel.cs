@@ -4,9 +4,10 @@ using System.Text;
 
 namespace BikeRentApp.Core
 {
-    public enum PurchaseType
+    public enum BikeModel
     {
-        Buy = 1,        
-        Rent = 2
+        Tofo = 1,        
+        TLady = 2,
+        TUni = 3
     }
 }
