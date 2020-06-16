@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeRentApp.Core", "BikeRen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeRentApp.Data", "BikeRentApp.Data\BikeRentApp.Data.csproj", "{7852BF78-E97F-4C9D-BA3C-F5E81488405A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentApp.BusinessLayer", "BikeRentApp.BusinessLayer\BikeRentApp.BusinessLayer.csproj", "{5DA761A9-DF32-4264-A83F-7EC3827D545B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BikeRentApp.BusinessLayer", "BikeRentApp.BusinessLayer\BikeRentApp.BusinessLayer.csproj", "{5DA761A9-DF32-4264-A83F-7EC3827D545B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BikeRentAppMVC", "BikeRentAppMVC\BikeRentAppMVC.csproj", "{D1E3D05A-4B79-443D-8598-99F41A20F27B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{5DA761A9-DF32-4264-A83F-7EC3827D545B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DA761A9-DF32-4264-A83F-7EC3827D545B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DA761A9-DF32-4264-A83F-7EC3827D545B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1E3D05A-4B79-443D-8598-99F41A20F27B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E3D05A-4B79-443D-8598-99F41A20F27B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1E3D05A-4B79-443D-8598-99F41A20F27B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1E3D05A-4B79-443D-8598-99F41A20F27B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

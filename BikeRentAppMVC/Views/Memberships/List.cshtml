@@ -1,0 +1,54 @@
+﻿@model BikeRentAppMVC.Models.Memberships.MembershipsListViewModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Memberships</h1>
+<div>
+    <table class="table table-bordered table-warning table-hover table-sm">
+        <thead class="thead-dark">
+            <tr>
+                <th>Membership Type</th>
+                <th>Buying Discount</th>
+                <th>Rent Discount</th>
+                <th>Members</th>
+                <th>Edit | Delete</th>
+            </tr>
+        </thead>
+        @foreach (var membership in Model.Memberships.GroupBy(m => m.MembershipType))
+        {
+            <tr>
+                <td>@membership.First().MembershipType</td>
+                <td>@membership.First().DiscountBuy.ToString("P")</td>
+                <td>@membership.First().DiscountRent.ToString("P")</td>
+                <td>
+                    
+                </td>
+                <td>
+                    <a class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@membership.First().Id">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a class="btn btn-outline-secondary" asp-action="Delete" asp-route-id="@membership.First().Id">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+
+        <tr style="display: @(!Model.Memberships.Any() ? "table-row" : "none")">
+            <td colspan="3">
+                Nothing to display. Add membership!
+            </td>
+        </tr>
+
+    </table>
+</div>
+<div class="form-group">
+    <a class="btn btn-primary" asp-action="Edit">Add Membership</a>
+    <a class="btn btn-secondary" asp-action="List">Back to customers list</a>
+</div>
+
+@if (!string.IsNullOrEmpty(Model.TempMessage))
+{
+    <div class="alert alert-warning">@Model.TempMessage</div>
+}

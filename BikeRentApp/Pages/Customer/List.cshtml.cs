@@ -22,6 +22,7 @@ namespace BikeRentApp.Pages.Customer
         [BindProperty(SupportsGet = true)]
         public string SearchEmail { get; set; }
 
+
         [TempData]
         public string TempMessage { get; set; }
 
