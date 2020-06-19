@@ -1,0 +1,83 @@
+﻿@model BikeRentAppMVC.Models.Customers.CustomersListViewModel
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Customers</h1>
+
+
+<div>
+    <form method="get">
+        <div class="form-row">
+            <div class="form-group col-sm-4">
+                <label asp-for="SearchName"></label>
+                <input placeholder="Customer first or last name" type="search" class="form-control" asp-for="SearchName" />
+            </div>
+            <div class="form-group col-sm-4">
+                <label asp-for="SearchEmail"></label>
+                <input placeholder="customer e-mail" type="search" class="form-control" asp-for="SearchEmail" />
+            </div>
+            <div class="form-group col-sm-2 d-flex">
+                <button class="btn btn-outline-secondary align-self-end" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+            <div class="form-group col-sm-2 d-flex">
+                <a class="btn btn-outline-success align-self-end" asp-action="Statistics">Statistics</a>
+            </div>
+        </div>
+    </form>
+    @if (!string.IsNullOrEmpty(Model.TempMessage))
+    {
+        <div class="alert alert-warning" role="alert">@Model.TempMessage</div>
+
+    }
+    <div class="table-responsive">
+        <table class="table table-bordered table-warning table-hover table-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Customer</th>
+                    <th>Membership</th>
+                    <th>E-mail</th>
+                    <th>Phone</th>
+                    <th>City</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Edit / Details / Delete</th>
+                </tr>
+            </thead>
+            @foreach (var customer in Model.Customers)
+            {
+                <tr>
+                    <td>@customer.FirstName @customer.LastName</td>
+                    <td>@customer.Membership?.MembershipType</td>
+                    <td>@customer.Email</td>
+                    <td>@customer.PhoneNumber</td>
+                    <td>@customer.City</td>
+                    <td>@customer.Age</td>
+                    <td>@customer.Gender</td>
+                    <td>
+                        <a class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@customer.Id">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a class="btn btn-outline-secondary" asp-action="Details" asp-route-id="@customer.Id">
+                            <i class="fas fa-search-plus"></i>
+                        </a>
+                        <a class="btn btn-outline-secondary" asp-action="Delete" asp-route-id="@customer.Id">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            }           
+                <tr style="display:@(Model.Customers.Any() ? "none" : "table-row")">
+                    <td colspan="8">
+                        No customers to display or nothing found after search!
+                    </td>
+                </tr>            
+        </table>
+    </div>
+</div>
+<div class="d-flex justify-content-between form-group">
+    <a class="btn btn-primary" asp-action="Edit">Add Customer</a>
+</div>
+

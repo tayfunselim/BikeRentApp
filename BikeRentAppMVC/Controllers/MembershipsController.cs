@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BikeRentApp.Core.Membership;
+﻿using BikeRentApp.Core.Membership;
 using BikeRentApp.Data;
 using BikeRentAppMVC.Models.Memberships;
 using Microsoft.AspNetCore.Mvc;
@@ -34,7 +30,7 @@ namespace BikeRentAppMVC.Controllers
             }
             else
             {
-                model.Membership = new BikeRentApp.Core.Membership.Membership();
+                model.Membership = new Membership();
             }
             return View(model);
         }
@@ -75,7 +71,5 @@ namespace BikeRentAppMVC.Controllers
             TempData["TempMessage"] = "The membership is deleted!";
             return RedirectToAction("List");
         }
-
-
     }
 }

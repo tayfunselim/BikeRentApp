@@ -22,7 +22,8 @@
                 <td>@membership.First().DiscountBuy.ToString("P")</td>
                 <td>@membership.First().DiscountRent.ToString("P")</td>
                 <td>
-                    
+                    Membersh counting!!!
+
                 </td>
                 <td>
                     <a class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@membership.First().Id">
@@ -45,7 +46,7 @@
 </div>
 <div class="form-group">
     <a class="btn btn-primary" asp-action="Edit">Add Membership</a>
-    <a class="btn btn-secondary" asp-action="List">Back to customers list</a>
+    <a class="btn btn-secondary" asp-controller="Customers" asp-action="List">Back to customers list</a>
 </div>
 
 @if (!string.IsNullOrEmpty(Model.TempMessage))
