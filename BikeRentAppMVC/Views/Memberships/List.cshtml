@@ -22,8 +22,7 @@
                 <td>@membership.First().DiscountBuy.ToString("P")</td>
                 <td>@membership.First().DiscountRent.ToString("P")</td>
                 <td>
-                    Membersh counting!!!
-
+                    @Model.Customers.Where(c => c.Membership.MembershipType == membership.First().MembershipType).Count()
                 </td>
                 <td>
                     <a class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@membership.First().Id">
@@ -49,7 +48,7 @@
     <a class="btn btn-secondary" asp-controller="Customers" asp-action="List">Back to customers list</a>
 </div>
 
-@if (!string.IsNullOrEmpty(Model.TempMessage))
+@if (TempData.Keys.Contains("TempMessage"))
 {
-    <div class="alert alert-warning">@Model.TempMessage</div>
+    <div class="alert alert-warning">@TempData["TempMessage"]</div>
 }

@@ -26,12 +26,13 @@
                 <a class="btn btn-outline-success align-self-end" asp-action="Statistics">Statistics</a>
             </div>
         </div>
-    </form>
-    @if (!string.IsNullOrEmpty(Model.TempMessage))
-    {
-        <div class="alert alert-warning" role="alert">@Model.TempMessage</div>
+    </form>    
 
+    @if (TempData.Keys.Contains("TempMessage"))
+    {
+        <div class="alert alert-warning">@TempData["TempMessage"]</div>
     }
+
     <div class="table-responsive">
         <table class="table table-bordered table-warning table-hover table-sm">
             <thead class="thead-dark">
@@ -68,12 +69,12 @@
                         </a>
                     </td>
                 </tr>
-            }           
-                <tr style="display:@(Model.Customers.Any() ? "none" : "table-row")">
-                    <td colspan="8">
-                        No customers to display or nothing found after search!
-                    </td>
-                </tr>            
+            }
+            <tr style="display:@(Model.Customers.Any() ? "none" : "table-row")">
+                <td colspan="8">
+                    No customers to display or nothing found after search!
+                </td>
+            </tr>
         </table>
     </div>
 </div>

@@ -8,15 +8,18 @@ namespace BikeRentAppMVC.Controllers
     public class MembershipsController : Controller
     {
         private readonly IMembershipData membershipData;
+        private readonly ICustomerData customerData;
 
-        public MembershipsController(IMembershipData membershipData)
+        public MembershipsController(IMembershipData membershipData, ICustomerData customerData)
         {
             this.membershipData = membershipData;
+            this.customerData = customerData;
         }
         public IActionResult List()
         {
             var model = new MembershipsListViewModel();
             model.Memberships = membershipData.GetMemberships();
+            model.Customers = customerData.GetCustomers();
             return View(model);
         }
 

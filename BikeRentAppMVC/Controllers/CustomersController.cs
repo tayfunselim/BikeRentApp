@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using BikeRentApp.Core;
 using BikeRentApp.Core.Enum;
 using BikeRentApp.Data;
@@ -83,9 +80,50 @@ namespace BikeRentAppMVC.Controllers
             return View(model);
         }
 
+        public IActionResult Details(int id)
+        {
+            var customer = customerData.GetCustomerById(id);
+            if (customer == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(customer);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var customer = customerData.GetCustomerById(id);
+            if (customer == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+            return View(customer);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Customer customer)
+        {
+            var temp = customerData.Delete(customer.Id);
+            if (temp == null)
+            {
+                return RedirectToAction("NotFound");
+            }
+
+            customerData.Commit();
+            TempData["TempMessage"] = "The customer is deleted!";
+            return RedirectToAction("List");
+        }
+
         public IActionResult NotFound(int id)
         {
             return View("NotFound");
+        }
+
+        public IActionResult Statistics()
+        {
+
+            return View("Statistics");
         }
     }
 }
